@@ -1,1 +1,352 @@
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 
+1.) bin-/bin – Essential User Binaries
+Contains essential command binaries (programs) that are required for the system to function in single-user mode and for all users to be able to use.
+Examples: ls, cp, mv, cat, bash
+These are basic utilities needed to troubleshoot and repair the system
+Example (AMAZON linux 2023 ami OS)
+----------------------------------
+fc lsirq resizecons systemd-machine-id-setup ac fg lslocks resolvectl systemd-mount acpi_listen fgconsole lslogins rev systemd-notify addr2line fgrep lsmcli rm systemd-path alias file lsmd rmdir systemd-repart amazon-ssm-agent fincore lsmem rnano systemd-resolve apropos find lsns rngtest systemd-run apropos.man-db find-repos-of-install lsof rpcbind systemd-socket-activate ar findmnt make-dummy-cert rpcinfo systemd-stdio-bridge arch fips-finish-install man rpm systemd-sysext arpaname fips-mode-setup man-recode rpm2archive systemd-sysusers arping flock man.man-db rpm2cpio systemd-tmpfiles as fmt mandb rpmdb systemd-tty-ask-password-agent at fold manpath rpmkeys systemd-umount atq free mapscrn rpmquery tabs atrm funzip mcookie rpmverify tac attr fuse2fs md5sum rst2html tail audit2allow gapplication mesg rst2html4 tapestat audit2why gawk miniterm-3.9.py rst2html5 tar aulast gdbus miniterm-3.py rst2latex taskset aulastlog gencat miniterm.py rst2man tbl ausyscall geqn mkdir rst2odt tcptraceroute auvirt getconf mkfifo rst2odt_prepstyles tcsh awk getent mknod rst2pseudoxml tee aws getfacl mktemp rst2s5 test aws_completer getfattr mmdblookup rst2xetex tic b2sum getopt more rstpep2html timedatectl base32 getopt mount rsync timeout base64 getopts mountpoint rsync-ssl tload basename gettext mpstat run-parts toe basenc gettext.sh mpstat runcon top bash gio msgattrib runcon rvi touch bashbug gio-querymodules-64 msgcat rview tput bashbug-64 glib-compile-schemas msgcmp rvim tr batch gneqn msgcomm sadf tracepath bc gnroff msgconv sar traceroute bg gpasswd msgen sftp traceroute6 bootctl gpg msgexec sbattach troff bunzip2 gpg-error msgfilter sbkeysync true busctl gpg2 msgfmt sbsiglist truncate bzcat gpgme-json msggrep sbsign sbvarsign trust bzcmp gpgv2 msginit sbverify bzip2 gpic msgmerge scp tsort bzip2recover gpgme-json msggrep screen tty bzless groups named-checkzone script live tty bzmore growpart namei secon udevadm c++filt grub2-amazon-setup nano sed ul ca-legacy grub2-editenv needs-restarting sedismod ulimit cal grub2-file neqn sedispol umask captoinfo grub2-menulst2cfg netstat semodule_expand umount cat grub2-mkimage networkctl semodule_link unalias catchsegv grub
+
+2.) /boot – Boot Loader Files
+Contains files required to boot the system, such as the Linux kernel, initial RAM disk (initrd), and bootloader configuration files (like GRUB).
+Examples: vmlinuz (Linux kernel), grub/
+-------------------------------------------
+System.map-6.1.112-122.189.amzn2023.x86_64  efi    initramfs-6.1.112-122.189.amzn2023.x86_64.img  symvers-6.1.112-122.189.amzn2023.x86_64.gz
+config-6.1.112-122.189.amzn2023.x86_64      grub2  loader                                         vmlinuz-6.1.112-122.189.amzn2023.x86_64
+
+3.) /dev – Device Files
+Contains device files that represent hardware devices (like disks, terminals, USB devices, etc.).
+These files allow software to interact with hardware through standard file operations. For example, /dev/sda represents the first storage device.
+Examples: /dev/sda, /dev/tty1, /dev/null
+-----------------------------------------
+autofs fd loop0 net sda127 tty10 tty2 tty29 tty38 tty47 tty56 tty8 vcs vcsa3 vcsu6 block full loop1 null sda128 tty11 tty20 tty3 tty39 tty48 tty57 tty9 vcs1 vcsa4 vfio btrfs-control fuse loop2 nvram shm tty12 tty21 tty30 tty4 tty49 tty58 ttyS0 vcs2 vcsa5 vhost-net char hpet loop3 ptmx snapshot tty13 tty22 tty31 tty40 tty5 tty59 ttyS1 vcs3 vcsa6 vhost-vsock console hugepages loop4 pts stderr tty14 tty23 tty32 tty41 tty50 tty6 ttyS2 vcs4 vcsu xen core initctl loop5 random stdin tty15 tty24 tty33 tty42 tty51 tty60 ttyS3 vcs5 vcsu1 xvda cpu input loop6 rtc stdout tty16 tty25 tty34 tty43 tty52 tty61 uhid vcs6 vcsu2 xvda1 cpu_dma_latency kmsg loop7 rtc0 tty tty17 tty26 tty35 tty44 tty53 tty62 uinput vcsa vcsu3 xvda127 cuse log mapper sda tty0 tty18 tty27 tty36 tty45 tty54 tty63 urandom vcsa1 vcsu4 xvda128 disk loop-control mqueue sda1 tty1 tty19 tty28 tty37 tty46 tty55 tty7 userfaultfd vcsa2 vcsu5 zero
+
+4.) /etc – Configuration Files
+Contains system-wide configuration files that control the behavior of the system and installed applications.
+It typically holds the configuration files for user accounts, system services, and networking.
+Examples: /etc/passwd, /etc/network/interfaces, /etc/fstab, /etc/hostname
+---------------------------------------------
+[root@ip-172-31-47-154 etc]# ls
+DIR_COLORS                cron.hourly      grub.d              libaudit.conf   nsswitch.conf     request-key.d  sudo.conf
+DIR_COLORS.lightbgcolor   cron.monthly     grub2-efi.cfg       libibverbs.d    openldap          resolv.conf    sudoers
+GREP_COLORS               cron.weekly      grub2.cfg           libnl           opt               rpc            sudoers.d
+NetworkManager            crontab          gshadow             libreport       os-release        rpm            sysconfig
+X11                       crypto-policies  gshadow-            libuser.conf    pam.d             rsyncd.conf    sysctl.conf
+acpi                      csh.cshrc        gss                 locale.conf     passwd            rsyslog.d      sysctl.d
+adjtime                   csh.login        gssproxy            localtime       passwd-           rwtab.d        system-release
+aliases                   dbus-1           hibinit-config.cfg  login.defs      pkcs11            sasl2          system-release-cpe
+alternatives              default          host.conf           logrotate.conf  pkgconfig         screenrc       systemd
+amazon                    depmod.d         hostname            logrotate.d     pki               security       terminfo
+amazon-linux-release      dhcp             hosts               lsm             pm                selinux        tmpfiles.d
+amazon-linux-release-cpe  dnf              idmapd.conf         machine-id      popt.d            services       trusted-key.key
+at.deny                   dracut.conf      image-id            magic           printcap          sestatus.conf  udev
+audit                     dracut.conf.d    init.d              man_db.conf     profile           shadow         update-motd.d
+bash_completion.d         environment      inittab             mke2fs.conf     profile.d         shadow-        vimrc
+bashrc                    ethertypes       inputrc             modprobe.d      protocols         shells         virc
+bindresvport.blacklist    exports          issue               modules-load.d  rc.d              skel           wgetrc
+binfmt.d                  exports.d        issue.net           motd            rc0.d             ssh            xattr.conf
+chkconfig.d               filesystems      kernel              motd.d          rc1.d             ssl            xdg
+chrony.conf               fstab            keyutils            mtab            rc2.d             sssd           yum.repos.d
+chrony.d                  gcrypt           krb5.conf           nanorc          rc3.d             statetab.d
+chrony.keys               gnupg            krb5.conf.d         netconfig       rc4.d             subgid
+cifs-utils                groff            ld.so.cache         networks        rc5.d             subgid-
+cloud                     group            ld.so.conf          nfs.conf        rc6.d             subuid
+cron.daily                group-           ld.so.conf.d        nfsmount.conf   request-key.conf  subuid-
+
+5.) /home – User Home Directories
+Contains the personal directories of regular users. Each user on the system typically has a subdirectory here where their files, settings, and documents are stored.
+Examples: /home/user1, /home/john
+----------------------
+[root@ip-172-31-47-154 home]# ls
+ec2-user
+
+6.) /lib – Essential Shared Libraries
+Contains shared libraries and kernel modules required for basic system functionality, often needed by programs in /bin and /sbin.
+These libraries provide essential code that can be shared between multiple programs.
+Examples: /lib/libc.so, /lib/modules/ (kernel modules)
+--------------------------------[root@ip-172-31-47-154 lib]# ls
+binfmt.d  environment.d  grub       kbd     modprobe.d      motd        pam.d      sysctl.d        system-release-cpe  tmpfiles.d
+debug     firmware       issue      kernel  modules         motd.d      python3.9  sysimage        systemd             udev
+dracut    games          issue.net  locale  modules-load.d  os-release  rpm        system-release  sysusers.d
+
+
+7.) /lib64 – 64-bit Shared Libraries
+Similar to /lib, but specifically for 64-bit libraries on 64-bit systems. These are required by 64-bit applications.
+Examples: /lib64/libc.so
+-----------------------------
+[root@ip-172-31-47-154 lib64]# ls
+X11                             libevent-2.1.so.7               libmagic.so.1.0.0                   librpmio.so.9
+audit                           libevent-2.1.so.7.0.1           libmana.so.1                        librpmio.so.9.1.3
+bfd-plugins                     libevent_core-2.1.so.7          libmana.so.1.0.48.0                 librpmsign.so.9
+bpf                             libevent_core-2.1.so.7.0.1      libmaxminddb.so.0                   librpmsign.so.9.1.3
+cifs-utils                      libevent_extra-2.1.so.7         libmaxminddb.so.0.0.7               librt.so.1
+cracklib_dict.hwm               libevent_extra-2.1.so.7.0.1     libmemusage.so                      libsasl2.so.3
+cracklib_dict.pwd               libevent_openssl-2.1.so.7       libmenu.so.6                        libsasl2.so.3.0.0
+cracklib_dict.pwi               libevent_openssl-2.1.so.7.0.1   libmenu.so.6.2                      libseccomp.so.2
+cryptsetup                      libevent_pthreads-2.1.so.7      libmenuw.so.6                       libseccomp.so.2.5.3
+dyninst                         libevent_pthreads-2.1.so.7.0.1  libmenuw.so.6.2                     libselinux.so.1
+engines-3                       libexpat.so.1                   libmetalink.so.3                    libsemanage.so.2
+fipscheck                       libexpat.so.1.8.10              libmetalink.so.3.1.0                libsensors.so.4
+games                           libext2fs.so.2                  libmlx4.so.1                        libsensors.so.4.5.0
+gawk                            libext2fs.so.2.4                libmlx4.so.1.0.48.0                 libsepol.so.2
+gconv                           libfdisk.so.1                   libmlx5.so.1                        libsigsegv.so.2
+gettext                         libfdisk.so.1.1.0               libmlx5.so.1.24.48.0                libsigsegv.so.2.0.6
+gio                             libffi.so.8                     libmnl.so.0                         libslang.so.2
+girepository-1.0                libffi.so.8.1.2                 libmnl.so.0.2.0                     libslang.so.2.3.2
+groff                           libfido2.so.1                   libmodulemd.so.2                    libslapi-2.4.so.2
+gssproxy                        libfido2.so.1.10.0              libmodulemd.so.2.13.0               libslapi-2.4.so.2.11.5
+hmaccalc                        libform.so.6                    libmount.so.1                       libsmartcols.so.1
+krb5                            libform.so.6.2                  libmount.so.1.1.0                   libsmartcols.so.1.1.0
+ld-linux-x86-64.so.2            libformw.so.6                   libmpfr.so.6                        libsmime3.so
+ldb                             libformw.so.6.2                 libmpfr.so.6.1.0                    libsoftokn3.chk
+libBrokenLocale.so.1            libfreebl3.chk                  libmvec.so.1                        libsoftokn3.so
+libSegFault.so                  libfreebl3.so                   libncurses.so.6                     libsolv.so.1
+libacl.so.1                     libfreeblpriv3.chk              libncurses.so.6.2                   libsolvext.so.1
+libacl.so.1.1.2301              libfreeblpriv3.so               libncursesw.so.6                    libsqlite3.so.0
+libaio.so.1                     libfstrm.so.0                   libncursesw.so.6.2                  libsqlite3.so.0.8.6
+libaio.so.1.0.0                 libfstrm.so.0.1.0               libnettle.so.8                      libss.so.2
+libaio.so.1.0.1                 libfuse.so.2                    libnettle.so.8.5                    libss.so.2.0
+libanl.so.1                     libfuse.so.2.9.9                libnewt.so.0.52                     libssl.so.3
+libarchive.so.13                libgcc_s-11-20230605.so.1       libnewt.so.0.52.21                  libssl.so.3.0.8
+libarchive.so.13.7.4            libgcc_s.so.1                   libnfsidmap                         libssl3.so
+libargon2.so.1                  libgcrypt.so.20                 libnfsidmap.so.1                    libsss_certmap.so.0
+libasm-0.188.so                 libgcrypt.so.20.4.2             libnfsidmap.so.1.0.0                libsss_certmap.so.0.2.0
+libasm.so.1                     libgdbm.so.6                    libnghttp2.so.14                    libsss_idmap.so.0
+libasprintf.so.0                libgdbm.so.6.0.0                libnghttp2.so.14.26.0               libsss_idmap.so.0.5.1
+libasprintf.so.0.0.0            libgdbm_compat.so.4             libnl-3.so.200                      libsss_nss_idmap.so.0
+libassuan.so.0                  libgdbm_compat.so.4.0.0         libnl-3.so.200.26.0                 libsss_nss_idmap.so.0.6.0
+libassuan.so.0.8.5              libgettextlib-0.21.so           libnl-genl-3.so.200                 libsss_sudo.so
+libattr.so.1                    libgettextpo.so.0               libnl-genl-3.so.200.26.0            libstdc++.so.6
+libattr.so.1.1.2501             libgettextpo.so.0.5.7           libnl-idiag-3.so.200                libstdc++.so.6.0.29
+libaudit.so.1                   libgettextsrc-0.21.so           libnl-idiag-3.so.200.26.0           libstoragemgmt.so.1
+libaudit.so.1.0.0               libgio-2.0.so.0                 libnl-nf-3.so.200                   libstoragemgmt.so.1.9.4
+libauparse.so.0                 libgio-2.0.so.0.7400.7          libnl-nf-3.so.200.26.0              libsystemd.so.0
+libauparse.so.0.0.0             libglib-2.0.so.0                libnl-route-3.so.200                libsystemd.so.0.35.0
+libbasicobjects.so.0            libglib-2.0.so.0.7400.7         libnl-route-3.so.200.26.0           libtalloc.so.2
+libbasicobjects.so.0.1.0        libgmodule-2.0.so.0             libnl-xfrm-3.so.200                 libtalloc.so.2.3.4
+libbfd-2.39-6.amzn2023.0.10.so  libgmodule-2.0.so.0.7400.7      libnl-xfrm-3.so.200.26.0            libtasn1.so.6
+libbind9-9.18.28.so             libgmp.so.10                    libnpth.so.0                        libtasn1.so.6.6.3
+libblkid.so.1                   libgmp.so.10.4.1                libnpth.so.0.1.2                    libtbb.so.2
+libblkid.so.1.1.0               libgnutls.so.30                 libns-9.18.28.so                    libtbbmalloc.so.2
+libboost_filesystem.so.1.75.0   libgnutls.so.30.35.0            libnspr4.so                         libtbbmalloc_proxy.so.2
+libboost_system.so.1.75.0       libgobject-2.0.so.0             libnss3.so                          libtdb.so.1
+libboost_thread.so.1.75.0       libgobject-2.0.so.0.7400.7      libnss_compat.so.2                  libtdb.so.1.4.7
+libbpf.so.1                     libgomp.so.1                    libnss_dns.so.2                     libtevent.so.0
+libbpf.so.1.1.0                 libgomp.so.1.0.0                libnss_files.so.2                   libtevent.so.0.13.0
+libbz2.so.1                     libgpg-error.so.0               libnss_myhostname.so.2              libtextstyle.so.0
+libbz2.so.1.0.8                 libgpg-error.so.0.32.0          libnss_resolve.so.2                 libtextstyle.so.0.1.1
+libc.so.6                       libgpgme.so.11                  libnss_sss.so.2                     libthread_db.so.1
+libc_malloc_debug.so.0          libgpgme.so.11.24.1             libnss_systemd.so.2                 libtic.so.6
+libcap-ng.so.0                  libgpm.so.2                     libnssckbi.so                       libtic.so.6.2
+libcap-ng.so.0.0.0              libgpm.so.2.1.0                 libnsssysinit.so                    libtinfo.so.6
+libcap.so.2                     libgssapi_krb5.so.2             libnssutil3.so                      libtinfo.so.6.2
+libcap.so.2.48                  libgssapi_krb5.so.2.2           libnuma.so.1                        libtirpc.so.3
+libcares.so.2                   libgssrpc.so.4                  libnuma.so.1.0.0                    libtirpc.so.3.0.0
+libcares.so.2.6.1               libgssrpc.so.4.2                libonig.so.5                        libudev.so.1
+libcbor.so.0.7                  libgthread-2.0.so.0             libonig.so.5.2.0                    libudev.so.1.7.5
+libcbor.so.0.7.0                libgthread-2.0.so.0.7400.7      libopcodes-2.39-6.amzn2023.0.10.so  libulockmgr.so.1
+libcollection.so.4              libhandle.so.1                  libp11-kit.so.0                     libulockmgr.so.1.0.1
+libcollection.so.4.1.1          libhandle.so.1.0.3              libp11-kit.so.0.3.0                 libunistring.so.2
+libcom_err.so.2                 libhistory.so.8                 libp11.so.3                         libunistring.so.2.1.0
+libcom_err.so.2.1               libhistory.so.8.1               libp11.so.3.5.0                     liburcu-bp.so.6
+libcomps.so.0                   libhogweed.so.6                 libpam.so.0                         liburcu-bp.so.6.1.0
+libconfig++.so.11               libhogweed.so.6.5               libpam.so.0.85.1                    liburcu-cds.so.6
+libconfig++.so.11.0.2           libhunspell-1.7.so.0            libpam_misc.so.0                    liburcu-cds.so.6.1.0
+libconfig.so.11                 libhunspell-1.7.so.0.0.1        libpam_misc.so.0.82.1               liburcu-common.so.6
+libconfig.so.11.0.2             libibverbs                      libpamc.so.0                        liburcu-common.so.6.1.0
+libcpupower.so.0                libibverbs.so.1                 libpamc.so.0.82.1                   liburcu-mb.so.6
+libcpupower.so.0.0.1            libibverbs.so.1.14.48.0         libpanel.so.6                       liburcu-mb.so.6.1.0
+libcrack.so.2                   libidn2.so.0                    libpanel.so.6.2                     liburcu-memb.so.6
+libcrack.so.2.9.0               libidn2.so.0.3.7                libpanelw.so.6                      liburcu-memb.so.6.1.0
+libcrypt.so.2                   libini_config.so.5              libpanelw.so.6.2                    liburcu-qsbr.so.6
+libcrypt.so.2.0.0               libini_config.so.5.2.1          libparted-fs-resize.so.0            liburcu-qsbr.so.6.1.0
+libcrypto.so.3                  libinih.so.0                    libparted-fs-resize.so.0.0.3        liburcu-signal.so.6
+libcrypto.so.3.0.8              libinih.so.49                   libparted.so.2                      liburcu-signal.so.6.1.0
+libcryptsetup.so.12             libirml.so.1                    libparted.so.2.0.3                  liburcu.so.6
+libcryptsetup.so.12.9.0         libirs-9.18.28.so               libpath_utils.so.1                  liburcu.so.6.1.0
+libctf-nobfd.so                 libisc-9.18.28.so               libpath_utils.so.1.0.1              libuser
+libctf-nobfd.so.0               libisccc-9.18.28.so             libpcap.so.1                        libuser.so.1
+libctf-nobfd.so.0.0.0           libisccfg-9.18.28.so            libpcap.so.1.10.1                   libuser.so.1.5.2
+libctf.so                       libjansson.so.4                 libpci.so.3                         libutempter.so.0
+libctf.so.0                     libjansson.so.4.14.0            libpci.so.3.7.0                     libutempter.so.1.2.1
+libctf.so.0.0.0                 libjemalloc.so.2                libpcprofile.so                     libutil.so.1
+libcurl.so.4                    libjitterentropy.so.3           libpcre2-8.so.0                     libuuid.so.1
+libcurl.so.4.8.0                libjitterentropy.so.3.4.1       libpcre2-8.so.0.11.0                libuuid.so.1.3.0
+libdb-5.3.so                    libjq.so.1                      libpcre2-posix.so.3                 libuv
+libdb-5.so                      libjq.so.1.0.4                  libpcre2-posix.so.3.0.2             libuv.so.1
+libdbus-1.so.3                  libjson-c.so.5                  libperl.so.5.32                     libuv.so.1.0.0
+libdbus-1.so.3.19.17            libjson-c.so.5.0.0              libperl.so.5.32.1                   libverto-libev.so.1
+libdebuginfod-0.188.so          libk5crypto.so.3                libpipeline.so.1                    libverto-libev.so.1.0.0
+libdebuginfod.so.1              libk5crypto.so.3.1              libpipeline.so.1.5.3                libverto.so.1
+libdevmapper.so.1.02            libkcapi.so.1                   libpkgconf.so.3                     libverto.so.1.0.0
+libdhash.so.1                   libkcapi.so.1.4.0               libpkgconf.so.3.0.0                 libxml2.so.2
+libdhash.so.1.1.0               libkdb5.so.10                   libplc4.so                          libxml2.so.2.10.4
+libdl.so.2                      libkdb5.so.10.0                 libplds4.so                         libxxhash.so.0
+libdnf                          libkeyutils.so.1                libpopt.so.0                        libxxhash.so.0.8.0
+libdnf.so.2                     libkeyutils.so.1.10             libpopt.so.0.0.1                    libyaml-0.so.2
+libdns-9.18.28.so               libkmod.so.2                    libprocps.so.8                      libyaml-0.so.2.0.9
+libdrop_ambient.so.0            libkmod.so.2.3.7                libprocps.so.8.0.3                  libz.so.1
+libdrop_ambient.so.0.0.0        libkrad.so.0                    libprotobuf-c.so.1                  libz.so.1.2.11
+libdw-0.188.so                  libkrad.so.0.0                  libprotobuf-c.so.1.0.0              libzstd.so.1
+libdw.so.1                      libkrb5.so.3                    libpsl.so.5                         libzstd.so.1.5.5
+libe2p.so.2                     libkrb5.so.3.3                  libpsl.so.5.3.3                     lua
+libe2p.so.2.3                   libkrb5support.so.0             libpsx.so.2                         man-db
+libeconf.so.0                   libkrb5support.so.0.1           libpsx.so.2.48                      nss
+libeconf.so.0.4.0               liblber-2.4.so.2                libpthread.so.0                     ossl-modules
+libedit.so.0                    liblber-2.4.so.2.11.5           libpwquality.so.1                   p11-kit-proxy.so
+libedit.so.0.0.67               libldap_r-2.4.so.2              libpwquality.so.1.0.2               perl5
+libefa.so.1                     libldap_r-2.4.so.2.11.5         libpython3.9.so.1.0                 pkcs11
+libefa.so.1.2.48.0              libldb.so.2                     libpython3.so                       pkgconfig
+libefiboot.so.1                 libldb.so.2.6.2                 libreadline.so.8                    pm-utils
+libefiboot.so.1.38              liblmdb.so.0.0.0                libreadline.so.8.1                  python3.9
+libefisec.so.1                  liblua-5.3.so                   libref_array.so.1                   rpm-plugins
+libefisec.so.1.38               liblua-5.4.so                   libref_array.so.1.2.1               sa
+libefivar.so.1                  liblz4.so.1                     librepo.so.0                        sasl2
+libefivar.so.1.38               liblz4.so.1.9.4                 libresolv.so.2                      security
+libelf-0.188.so                 liblzma.so.5                    librpm.so.9                         sssd
+libelf.so.1                     liblzma.so.5.2.5                librpm.so.9.1.3                     systemd
+libev.so.4                      libm.so.6                       librpmbuild.so.9                    systemtap
+libev.so.4.0.0                  libmagic.so.1                   librpmbuild.so.9.1.3                xfsprogs
+
+8. /local – Locally Installed Software
+Typically used for software that is locally installed (by the system administrator) rather than through the package manager. This directory is often used for custom software or third-party applications.
+It’s common to see /usr/local/ or /opt/ used for non-distribution software installations.
+Examples: /usr/local/bin/, /usr/local/lib/
+
+
+9. /media – Removable Media
+Used for mounting removable media, such as USB drives, CD/DVD drives, and other external devices.
+This directory is where devices like USB sticks are typically mounted automatically when inserted.
+Examples: /media/cdrom, /media/usb
+
+10.) /mnt – Mount Points for Temporary Filesystems
+Traditionally used for mounting temporary filesystems or manual mounting of devices by the system administrator (e.g., mounting network drives or external storage devices).
+It’s a standard practice to mount temporary filesystems here.
+Example: /mnt/external_drive
+
+
+11. /opt – Optional Application Software
+Contains optional software packages that are not part of the default operating system distribution. This can be commercial or proprietary software or software installed manually.
+Examples: /opt/google/, /opt/lampp/ (for XAMPP)
+-----------------------------------------------
+[root@ip-172-31-47-154 opt]# ls
+aws
+
+
+12. /proc – Process and System Information (Virtual Filesystem)
+A virtual filesystem that provides information about running processes and the kernel.
+This directory doesn't contain regular files but rather system information and status about the system's runtime.
+Examples: /proc/cpuinfo, /proc/meminfo, /proc/1/status (information on process ID 1)
+
+13. /root – Root User's Home Directory
+The home directory of the root user (administrator). While /home is for regular users, the root user's files are stored here.
+Example: /root/
+
+14. /run – Runtime Variable Data
+Contains temporary runtime files and system information that are used for the running system but should be discarded when the system is rebooted.
+This directory holds information such as PID files, lock files, and system information that persists between reboots.
+Example: /run/utmp (user login information)
+
+15. /sbin – System Binaries
+Contains system administration binaries (commands) that are typically run by the root user (administrator).
+These binaries are critical for system maintenance and recovery.
+Examples: /sbin/reboot, /sbin/ifconfig, /sbin/fsck
+[root@ip-172-31-47-154 sbin]# ls
+accessdb              e4defrag                   ipmaddr               parted                                   setsebool
+accton                ebsnvme-id                 iptunnel              partprobe                                sfdisk
+acpid                 ec2nvme-nsid               irqbalance            partx                                    sgdisk
+addpart               ec2udev-vbd                kacpimon              pidof                                    showmount
+adduser               edquota                    key.dns_resolver      ping                                     shutdown
+agetty                ether-wake                 kpatch                ping6                                    slattach
+alternatives          ethtool                    lchage                pivot_root                               sm-notify
+amazon-chrony-config  exportfs                   ldattach              plipconfig                               ss
+amazon-linux-sb       faillock                   ldconfig              poweroff                                 sshd
+arp                   fatlabel                   lgroupadd             pwck                                     sss_cache
+arping                fdformat                   lgroupdel             pwconv                                   sssd
+atd                   fdisk                      lgroupmod             pwhistory_helper                         start-statd
+atrun                 filefrag                   lid                   pwunconv                                 sulogin
+auditctl              findfs                     lnewusers             quotacheck                               swaplabel
+auditd                fix-info-dir               lnstat                quotaoff                                 swapoff
+augenrules            fixfiles                   load_policy           quotaon                                  swapon
+aureport              fixparts                   logrotate             quotastats                               switch_root
+ausearch              fsck                       logsave               rdisc                                    sysctl
+autrace               fsck.cramfs                losetup               rdma                                     tcpdump
+avcstat               fsck.ext2                  lpasswd               readprofile                              tcpslice
+badblocks             fsck.ext3                  lsmod                 reboot                                   telinit
+blkdeactivate         fsck.ext4                  lspci                 repquota                                 tipc
+blkdiscard            fsck.fat                   luseradd              request-key                              tracepath
+blkid                 fsck.minix                 luserdel              resize2fs                                tracepath6
+blkmapd               fsck.msdos                 lusermod              resizepart                               tsig-keygen
+blkzone               fsck.vfat                  matchpathcon          resolvconf                               tune2fs
+blockdev              fsck.xfs                   mii-diag              restorecon                               udevadm
+bridge                fsfreeze                   mii-tool              restorecon_xattr                         umount.nfs
+capsh                 fstrim                     mkdict                rfkill                                   umount.nfs4
+cfdisk                fuser                      mkdosfs               rmmod                                    unix_chkpwd
+cgdisk                gdisk                      mke2fs                rngd                                     unix_update
+chcpu                 genhomedircon              mkfs                  route                                    update-alternatives
+chgpasswd             genhostid                  mkfs.cramfs           rpc.gssd                                 update-motd
+chkconfig             genl                       mkfs.ext2             rpc.idmapd                               update-pciids
+chpasswd              getcap                     mkfs.ext3             rpc.mountd                               useradd
+chronyd               getenforce                 mkfs.ext4             rpc.nfsd                                 userdel
+chroot                getpcaps                   mkfs.fat              rpc.statd                                usermod
+clock                 getsebool                  mkfs.minix            rpcbind                                  validatetrans
+consoletype           groupadd                   mkfs.msdos            rpcdebug                                 vdpa
+convertquota          groupdel                   mkfs.vfat             rpcinfo                                  vigr
+cracklib-check        groupmems                  mkfs.xfs              rtacct                                   vipw
+cracklib-format       groupmod                   mkhomedir_helper      rtcwake                                  visudo
+cracklib-packer       grpck                      mklost+found          rtmon                                    wipefs
+cracklib-unpacker     grpconv                    mkswap                rtstat                                   xfs_admin
+create-cracklib-dict  grpunconv                  modinfo               runlevel                                 xfs_bmap
+cryptsetup            grub2-bios-setup           modprobe              runuser                                  xfs_copy
+ctrlaltdel            grub2-get-kernel-settings  mount.nfs             sa                                       xfs_db
+ctstat                grub2-install              mount.nfs4            sasldblistusers2                         xfs_estimate
+dcb                   grub2-mkconfig             mountstats            saslpasswd2                              xfs_freeze
+ddns-confgen          grub2-probe                named-checkzone       sefcontext_compile                       xfs_fsr
+debugfs               grub2-reboot               named-compilezone     selabel_digest                           xfs_growfs
+delpart               grub2-rpm-sort             nameif                selabel_get_digests_all_partial_matches  xfs_info
+depmod                grub2-set-bootflag         newusers              selabel_lookup                           xfs_io
+devlink               grub2-set-default          nfsconf               selabel_lookup_best_match                xfs_logprint
+dmfilemapd            grub2-set-password         nfsconvert            selabel_partial_match                    xfs_mdrestore
+dmsetup               grub2-setpassword          nfsdcld               selinux_check_access                     xfs_metadump
+dmstats               grub2-switch-to-blscfg     nfsdclddb             selinuxconlist                           xfs_mkfile
+dosfsck               grubby                     nfsdclnts             selinuxdefcon                            xfs_ncheck
+dosfslabel            gssproxy                   nfsdcltrack           selinuxenabled                           xfs_quota
+dump-acct             halt                       nfsidmap              selinuxexeccon                           xfs_repair
+dump-utmp             hwclock                    nfsiostat             semanage                                 xfs_rtcp
+dumpe2fs              iconvconfig                nfsref                semodule                                 xfs_spaceman
+e2freefrag            ifconfig                   nfsstat               service                                  xfsdump
+e2fsck                ifenslave                  nologin               sestatus                                 xfsinvutil
+e2image               ifstat                     nstat                 setcap                                   xfsrestore
+e2label               init                       ntsysv                setenforce                               xqmstats
+e2mmpstatus           insmod                     pam_console_apply     setfiles                                 zic
+e2undo                install-info               pam_namespace_helper  setpci                                   zramctl
+e4crypt               ip                         pam_timestamp_check   setquota
+
+16. /srv – Service Data
+Contains data for services that are provided by the system. For example, files that are served by a web server (e.g., Apache, Nginx), FTP servers, etc.
+Examples: /srv/www/ (web server files)
+
+17. /sys – System Information (Virtual Filesystem)
+Similar to /proc, but /sys provides an interface to the kernel's view of the system and hardware.
+It provides detailed information about devices, kernel parameters, and other system settings, allowing you to interact with the kernel.
+Example: /sys/class/net/ (network interfaces)
+
+18. /tmp – Temporary Files
+Contains temporary files that are used by programs or services. These files are often cleaned up upon system restart or through scheduled maintenance.
+Example: /tmp/tempfile.txt
+
+19. /usr – User Programs
+Contains user-related programs and data. This is one of the largest directories and contains most of the applications, libraries, and documentation installed on the system.
+Examples: /usr/bin/ (user binaries), /usr/lib/ (shared libraries), /usr/share/ (documentation, fonts)
+[root@ip-172-31-47-154 usr]# ls
+bin  games  include  lib  lib64  libexec  local  sbin  share  src  tmp
+
+20. /var – Variable Data
+Contains files that are expected to change in size or content during the system's operation, such as log files, mail, or database files.
+Examples: /var/log/ (system logs), /var/mail/ (user mail), /var/lib/ (variable state data)
+
+[root@ip-172-31-47-154 /]# cd var
+[root@ip-172-31-47-154 var]# ls
+account  adm  cache  db  empty  ftp  games  kerberos  lib  local  lock  log  mail  nis  opt  preserve  run  spool  tmp  yp
+[root@ip-172-31-47-154 var]# 

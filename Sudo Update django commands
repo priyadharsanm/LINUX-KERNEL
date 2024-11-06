@@ -1,0 +1,221 @@
+sudo yum update
+sudo yum install python3
+sudo yum install python3-pip
+pip3 --version
+
+(virt) [root@ip-172-31-47-154 bin]# pip list
+Package           Version
+----------------- -------
+asgiref           3.8.1
+Django            4.2.16
+pip               24.3.1
+PyMySQL           1.1.1
+setuptools        59.6.0
+sqlparse          0.5.1
+typing_extensions 4.12.2
+
+
+(virt) [root@ip-172-31-47-154 bin]# pip install mysql-connector-python
+Collecting mysql-connector-python
+  Downloading mysql_connector_python-9.1.0-cp39-cp39-manylinux_2_28_x86_64.whl.metadata (6.0 kB)
+Downloading mysql_connector_python-9.1.0-cp39-cp39-manylinux_2_28_x86_64.whl (34.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.4/34.4 MB 74.5 MB/s eta 0:00:00
+Installing collected packages: mysql-connector-python
+Successfully installed mysql-connector-python-9.1.0
+
+
+https://repo.mysql.com/
+(virt) [root@ip-172-31-47-154 bin]# wget https://repo.mysql.com/mysql80-community-release-el9-1.noarch.rpm
+
+(virt) [root@ip-172-31-47-154 bin]# sudo yum localinstall mysql80-community-release-el9-1.noarch.rpm -y
+
+
+Working code for mysql: 
+-------------------------------------------------------------
+-----------------------------------------------------------------
+-------------------------------------------------------------
+https://dev.mysql.com/doc/refman/8.4/en/linux-installation-yum-repo.html
+virt) [root@ip-172-31-47-154 bin]# sudo dnf clean all 
+38 files removed
+(virt) [root@ip-172-31-47-154 bin]# wget https://repo.mysql.com/mysql84-community-release-el9-1.noarch.rpm
+--2024-11-06 18:54:43--  https://repo.mysql.com/mysql84-community-release-el9-1.noarch.rpm
+Resolving repo.mysql.com (repo.mysql.com)... 23.198.89.247, 2600:1408:ec00:881::1d68, 2600:1408:ec00:888::1d68
+Connecting to repo.mysql.com (repo.mysql.com)|23.198.89.247|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13139 (13K) [application/x-redhat-package-manager]
+Saving to: ‘mysql84-community-release-el9-1.noarch.rpm’
+
+mysql84-community-release-el9-1.noar 100%[===================================================================>]  12.83K  --.-KB/s    in 0s      
+
+2024-11-06 18:54:43 (288 MB/s) - ‘mysql84-community-release-el9-1.noarch.rpm’ saved [13139/13139]
+
+(virt) [root@ip-172-31-47-154 bin]# ls
+Activate.ps1  activate.csh   django-admin  mysql80-community-release-el9-1.noarch.rpm  pip   pip3.9  python3    sqlformat
+activate      activate.fish  index.html    mysql84-community-release-el9-1.noarch.rpm  pip3  python  python3.9
+(virt) [root@ip-172-31-47-154 bin]# rm -rf mysql80-community-release-el9-1.noarch.rpm 
+(virt) [root@ip-172-31-47-154 bin]# ls
+Activate.ps1  activate.csh   django-admin  mysql84-community-release-el9-1.noarch.rpm  pip3    python   python3.9
+activate      activate.fish  index.html    pip                                         pip3.9  python3  sqlformat
+(virt) [root@ip-172-31-47-154 bin]# sudo yum localinstall mysql84-community-release-el9-1.noarch.rpm 
+Amazon Linux 2023 repository                                                                                      48 MB/s |  28 MB     00:00    
+Amazon Linux 2023 Kernel Livepatch repository                                                                     62 kB/s |  11 kB     00:00    
+MySQL 8.0 Community Server                                                                                       6.4 MB/s | 2.1 MB     00:00    
+MySQL Connectors Community                                                                                       514 kB/s |  68 kB     00:00    
+MySQL Tools Community                                                                                            3.1 MB/s | 827 kB     00:00    
+Dependencies resolved.
+=================================================================================================================================================
+ Package                                        Architecture                Version                      Repository                         Size
+=================================================================================================================================================
+Installing:
+ mysql84-community-release                      noarch                      el9-1                        @commandline                       13 k
+     replacing  mysql80-community-release.noarch el9-1
+
+Transaction Summary
+=================================================================================================================================================
+Install  1 Package
+
+Total size: 13 k
+Is this ok [y/N]: y
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                         1/1 
+  Installing       : mysql84-community-release-el9-1.noarch                                                                                  1/2 
+  Obsoleting       : mysql80-community-release-el9-1.noarch                                                                                  2/2 
+  Verifying        : mysql84-community-release-el9-1.noarch                                                                                  1/2 
+  Verifying        : mysql80-community-release-el9-1.noarch                                                                                  2/2 
+=================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.6.20241028:
+    Run the following command to upgrade to 2023.6.20241028:
+
+      dnf upgrade --releasever=2023.6.20241028
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.6.20241028.html
+
+  Version 2023.6.20241031:
+    Run the following command to upgrade to 2023.6.20241031:
+
+      dnf upgrade --releasever=2023.6.20241031
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.6.20241031.html
+
+=================================================================================================================================================
+
+Installed:
+  mysql84-community-release-el9-1.noarch                                                                                                         
+
+Complete!
+(virt) [root@ip-172-31-47-154 bin]# 
+
+
+(virt) [root@ip-172-31-47-154 bin]# sudo dnf install mysql-community-server
+MySQL 8.4 LTS Community Server                                                                                   2.6 MB/s | 643 kB     00:00    
+MySQL Tools 8.4 LTS Community                                                                                    1.4 MB/s | 296 kB     00:00    
+Dependencies resolved.
+=================================================================================================================================================
+ Package                                        Architecture           Version                     Repository                               Size
+=================================================================================================================================================
+Installing:
+ mysql-community-server                         x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                  50 M
+Installing dependencies:
+ mysql-community-client                         x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                 3.1 M
+ mysql-community-client-plugins                 x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                 1.5 M
+ mysql-community-common                         x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                 575 k
+ mysql-community-icu-data-files                 x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                 2.3 M
+ mysql-community-libs                           x86_64                 8.4.3-1.el9                 mysql-8.4-lts-community                 1.5 M
+
+Transaction Summary
+=================================================================================================================================================
+Install  6 Packages
+
+Total download size: 59 M
+Installed size: 330 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/6): mysql-community-common-8.4.3-1.el9.x86_64.rpm                                                             2.6 MB/s | 575 kB     00:00    
+(2/6): mysql-community-client-plugins-8.4.3-1.el9.x86_64.rpm                                                     5.8 MB/s | 1.5 MB     00:00    
+(3/6): mysql-community-client-8.4.3-1.el9.x86_64.rpm                                                              11 MB/s | 3.1 MB     00:00    
+(4/6): mysql-community-libs-8.4.3-1.el9.x86_64.rpm                                                                27 MB/s | 1.5 MB     00:00    
+(5/6): mysql-community-icu-data-files-8.4.3-1.el9.x86_64.rpm                                                      20 MB/s | 2.3 MB     00:00    
+(6/6): mysql-community-server-8.4.3-1.el9.x86_64.rpm                                                              47 MB/s |  50 MB     00:01    
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                             44 MB/s |  59 MB     00:01     
+MySQL 8.4 LTS Community Server                                                                                   3.0 MB/s | 3.1 kB     00:00    
+Importing GPG key 0xA8D3785C:
+ Userid     : "MySQL Release Engineering <mysql-build@oss.oracle.com>"
+ Fingerprint: BCA4 3417 C3B4 85DD 128E C6D4 B7B3 B788 A8D3 785C
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2023
+Is this ok [y/N]: y
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                         1/1 
+  Installing       : mysql-community-common-8.4.3-1.el9.x86_64                                                                               1/6 
+  Installing       : mysql-community-client-plugins-8.4.3-1.el9.x86_64                                                                       2/6 
+  Installing       : mysql-community-libs-8.4.3-1.el9.x86_64                                                                                 3/6 
+  Running scriptlet: mysql-community-libs-8.4.3-1.el9.x86_64                                                                                 3/6 
+  Installing       : mysql-community-client-8.4.3-1.el9.x86_64                                                                               4/6 
+  Installing       : mysql-community-icu-data-files-8.4.3-1.el9.x86_64                                                                       5/6 
+  Running scriptlet: mysql-community-server-8.4.3-1.el9.x86_64                                                                               6/6 
+  Installing       : mysql-community-server-8.4.3-1.el9.x86_64                                                                               6/6 
+  Running scriptlet: mysql-community-server-8.4.3-1.el9.x86_64                                                                               6/6 
+  Verifying        : mysql-community-client-8.4.3-1.el9.x86_64                                                                               1/6 
+  Verifying        : mysql-community-client-plugins-8.4.3-1.el9.x86_64                                                                       2/6 
+  Verifying        : mysql-community-common-8.4.3-1.el9.x86_64                                                                               3/6 
+  Verifying        : mysql-community-icu-data-files-8.4.3-1.el9.x86_64                                                                       4/6 
+  Verifying        : mysql-community-libs-8.4.3-1.el9.x86_64                                                                                 5/6 
+  Verifying        : mysql-community-server-8.4.3-1.el9.x86_64                                                                               6/6 
+=================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.6.20241028:
+    Run the following command to upgrade to 2023.6.20241028:
+
+      dnf upgrade --releasever=2023.6.20241028
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.6.20241028.html
+
+  Version 2023.6.20241031:
+    Run the following command to upgrade to 2023.6.20241031:
+
+      dnf upgrade --releasever=2023.6.20241031
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.6.20241031.html
+
+=================================================================================================================================================
+
+Installed:
+  mysql-community-client-8.4.3-1.el9.x86_64         mysql-community-client-plugins-8.4.3-1.el9.x86_64 mysql-community-common-8.4.3-1.el9.x86_64
+  mysql-community-icu-data-files-8.4.3-1.el9.x86_64 mysql-community-libs-8.4.3-1.el9.x86_64           mysql-community-server-8.4.3-1.el9.x86_64
+
+Complete!
+(virt) [root@ip-172-31-47-154 bin]# ls
+Activate.ps1  activate.csh   django-admin  mysql84-community-release-el9-1.noarch.rpm  pip3    python   python3.9
+activate      activate.fish  index.html    pip                                         pip3.9  python3  sqlformat
+(virt) [root@ip-172-31-47-154 bin]# sudo systemctl start mysqld
+(virt) [root@ip-172-31-47-154 bin]# sudo systemctl enable mysqld
+(virt) [root@ip-172-31-47-154 bin]# mysql --version
+mysql  Ver 8.4.3 for Linux on x86_64 (MySQL Community Server - GPL)
+
+
+------------------------------------------
+------------------------------------------------------------
+-----------------------------------------------------------

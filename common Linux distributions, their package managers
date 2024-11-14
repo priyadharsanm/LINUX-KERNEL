@@ -1,0 +1,22 @@
+Below is a breakdown of common Linux distributions, their package managers, and terms related to updates and upgrades.
+----------------------------------------------------------------------------------------------------------------------------------
+Common Package Managers Across Linux Distributions
+APT (apt-get, apt-cache): Used by Debian, Ubuntu, and derivatives.
+YUM/DNF: Used by Red Hat, CentOS, Fedora, and Amazon Linux (with dnf replacing yum in newer versions).
+Zypper: Used by SUSE and openSUSE.
+Pacman: Used by Arch Linux and Manjaro.
+Snap: A universal package management system that works across many Linux distributions.
+Flatpak: Another universal packaging system that works across multiple distros.
+
+
+Package Manager: apt (Advanced Package Tool)
+yum (Yellowdog Updater, Modified)
+
+Distro	          Package Manager           	Upgrade Command
+Ubuntu	          apt	sudo                    apt upgrade
+Amazon Linux	    yum/dnf	                    sudo yum update (Amazon Linux 1)
+CentOS/RHE	      yum/dnf	                    sudo yum update (CentOS 7)
+Debian	          apt	                        sudo apt upgrade
+Fedora	          dnf	                        sudo dnf update
+Arch Linux	      pacman	                    sudo pacman -Syu
+SUSE/openSUSE	    zypper	                    sudo zypper update
